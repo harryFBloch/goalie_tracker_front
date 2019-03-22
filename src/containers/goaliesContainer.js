@@ -6,7 +6,7 @@ class GoaliesContainer extends Component {
   render(){
     return(
       <>
-        <Route exact path="/goalies" component={GoalieTableInputComponent}/>
+        <GoalieTableInputComponent/>
       </>
     )
   }

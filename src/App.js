@@ -17,6 +17,7 @@ render(){
         <Route path="/games" component={GameContainer} />
         <Route path="/goalies" component={GoaliesContainer}/>
         <Route path="/gameslist" component={GamesListComponent}/>
+        <Route exact path="/" component={GoaliesContainer} />
       </Container>
     </div>
 )
