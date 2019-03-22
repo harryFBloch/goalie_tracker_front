@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Row, Input, Button, Col} from 'react-materialize'
+import {createGame} from '../../actions/gameActions'
+import {connect} from 'react-redux'
 
 class NewGameComponent extends Component {
   constructor(){
@@ -26,14 +28,16 @@ class NewGameComponent extends Component {
     if (this.isFormValid()){
       event.preventDefault()
       let games = this.formatGames(this.state)
-      fetch('http://localhost:3000/games',{
-        method: "post",
-        body: JSON.stringify(games)
-      })
-      .then(resp => resp.json())
-      .then(data => {
-        this.props.loadShowPage(data.games.home.id)
-    })
+      this.props.createGame(games, this.props.history)
+
+      // fetch('http://localhost:3000/games',{
+      //   method: "post",
+      //   body: JSON.stringify(games)
+      // })
+    //   .then(resp => resp.json())
+    //   .then(data => {
+    //     this.props.loadShowPage(data.games.home.id)
+    // })
   }
   }
 
@@ -100,4 +104,4 @@ class NewGameComponent extends Component {
   }
 }
 
-export default NewGameComponent
+export default connect(null, {createGame})(NewGameComponent)

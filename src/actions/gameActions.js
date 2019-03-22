@@ -1,5 +1,3 @@
-// import {dispatch, getState} from 'react-redux'
-
 
 export function getGames(gameId){
   return (dispatch,getState) => {
@@ -12,8 +10,7 @@ export function getGames(gameId){
   }
 }
 
-export function createGame(game, homeBool) {
-  game.homeBool = homeBool
+export function createGame(game, history) {
   return (dispatch) => {
     dispatch({type: "START_CREATING_GAMES"})
     return fetch('http://localhost:3000/games',{
@@ -22,6 +19,7 @@ export function createGame(game, homeBool) {
     })
     .then(resp => resp.json())
     .then(data => {
+      history.push(`/games/${data.games.home.id}`)
       return dispatch({type: "CREATE_GAMES_SUCCESS", game: data})
   })
   }

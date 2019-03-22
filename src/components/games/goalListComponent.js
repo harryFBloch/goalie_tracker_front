@@ -9,7 +9,7 @@ export default function GoalsList(props){
             <CollectionItem s={8}>hole: {goal.hole} period: {goal.period}
             <a href="#" className="secondary-content" onClick={(event) => {
               event.preventDefault()
-              props.deleteGoal(goal.id, props.game.home_bool)}}>
+              props.deleteGoal(goal.id, props.game.homeool)}}>
             <i className="material-icons">delete</i></a></CollectionItem>
           <hr/>
         </div>

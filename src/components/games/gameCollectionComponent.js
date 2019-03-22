@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import {CollectionItem} from 'react-materialize'
+import {CollectionItem, Button} from 'react-materialize'
 
-export const GameCollectionComponent = ({game}) => {
-  let date = game.date.split("T")[0]
+export class GameCollectionComponent extends Component {
+
+
+render(){
+  let date = this.props.game.date.split("T")[0]
   return(
-    <CollectionItem href={`/games/${game.id}`}
-      >{game.goalie.team} vs {game.opposing_team} period: {game.period} date: {date}</CollectionItem>
+    <CollectionItem>{this.props.game.goalie.team} vs {this.props.game.opposing_team} period: {this.props.game.period} date: {date} </CollectionItem>
   )
+}
 }
