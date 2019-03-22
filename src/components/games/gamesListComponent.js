@@ -9,7 +9,7 @@ export default class GamesListComponent extends Component {
   }
 
   componentDidMount(){
-    fetch('http://localhost:3000/games')
+    fetch('https://goalie-tracker-back.herokuapp.com/games')
     .then(resp => resp.json())
     .then(data => this.setState({games: data}))
   }

@@ -10,14 +10,14 @@ export default class GoalieTableComponent extends Component {
   }
 
   componentDidMount(){
-    fetch('http://localhost:3000/goalies')
+    fetch('https://goalie-tracker-back.herokuapp.com/goalies')
     .then(resp => resp.json())
     .then(data => this.setState({goalies: data}))
   }
 
   searchGoalies = () =>{
     console.log(this.state.searchString)
-    fetch(`http://localhost:3000/goalies/?search_string=${this.state.searchString}`)
+    fetch(`https://goalie-tracker-back.herokuapp.com/goalies/?search_string=${this.state.searchString}`)
     .then(resp => resp.json())
     .then(data => this.setState({...this.state, goalies: data}))
   }

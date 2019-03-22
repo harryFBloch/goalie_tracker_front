@@ -13,7 +13,7 @@ export function getGames(gameId){
 export function createGame(game, history) {
   return (dispatch) => {
     dispatch({type: "START_CREATING_GAMES"})
-    return fetch('http://localhost:3000/games',{
+    return fetch('https://goalie-tracker-back.herokuapp.com/games',{
       method: "post",
       body: JSON.stringify(game)
     })
@@ -28,7 +28,7 @@ export function createGame(game, history) {
 export function getHomeGame(gameId) {
   return (dispatch) => {
     dispatch({type: 'START_GETTING_HOME_GAME'})
-    return fetch(`http://localhost:3000/games/${gameId}`)
+    return fetch(`https://goalie-tracker-back.herokuapp.com/games/${gameId}`)
     .then(resp => resp.json())
     .then(homeGame => dispatch({type: "GET_HOME_GAME_SUCCESS", homeGame}))
   }
@@ -37,7 +37,7 @@ export function getHomeGame(gameId) {
 export function getAwayGame(gameId) {
   return (dispatch) => {
     dispatch({type: 'START_GETTING_AWAY_GAME'})
-    return fetch(`http://localhost:3000/games/${gameId}`)
+    return fetch(`https://goalie-tracker-back.herokuapp.com/games/${gameId}`)
     .then(resp => resp.json())
     .then(awayGame => dispatch({type: "GET_AWAY_GAME_SUCCESS", awayGame}))
   }
@@ -46,7 +46,7 @@ export function getAwayGame(gameId) {
 export function newBlock(pad, game){
   return (dispatch) => {
       dispatch({type: 'START_NEW_BLOCK'})
-      return fetch(`http://localhost:3000/blocks`,{
+      return fetch(`https://goalie-tracker-back.herokuapp.com/blocks`,{
       method: "post",
       body: JSON.stringify({pad: pad, period: game.period, goalie_id: game.goalie_id, game_id: game.id}),
     })
@@ -58,7 +58,7 @@ export function newBlock(pad, game){
 export function newGoal(hole, game){
   return (dispatch) => {
       dispatch({type: 'START_NEW_GOAL'})
-      return fetch(`http://localhost:3000/goals`,{
+      return fetch(`https://goalie-tracker-back.herokuapp.com/goals`,{
       method: "post",
       body: JSON.stringify({hole: hole, period: game.period, goalie_id: game.goalie_id, game_id: game.id}),
     })
@@ -70,7 +70,7 @@ export function newGoal(hole, game){
 export function updateGame(game){
   return (dispatch) => {
     dispatch({type: 'START_UPDATING_GAME'})
-    return fetch(`http://localhost:3000/games/${game.id}`,{
+    return fetch(`https://goalie-tracker-back.herokuapp.com/games/${game.id}`,{
       method: "PATCH",
       body: JSON.stringify({game: game}),
       headers: {
@@ -85,7 +85,7 @@ export function updateGame(game){
 export function deleteGoal(goalId, homeBool){
   return (dispatch) => {
     dispatch({type: 'START_DELETING_GOAL'})
-    return fetch(`http://localhost:3000/goals/${goalId}`,{
+    return fetch(`https://goalie-tracker-back.herokuapp.com/goals/${goalId}`,{
       method: "delete"
     })
     .then(resp => resp.json())
@@ -97,7 +97,7 @@ export function deleteGoal(goalId, homeBool){
 export function deleteBlock(blockId, homeBool){
   return (dispatch) => {
     dispatch({type: 'START_DELETING_GOAL'})
-    return fetch(`http://localhost:3000/blocks/${blockId}`,{
+    return fetch(`https://goalie-tracker-back.herokuapp.com/blocks/${blockId}`,{
       method: "delete"
     })
     .then(resp => resp.json())
